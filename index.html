@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Declaración de Fe - Iglesia Bautista Filadelfia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.7;
+            color: #1a1a1a;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInDown 0.8s ease-out forwards;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(17, 24, 39, 0.02), transparent);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            50% { left: 100%; }
+            100% { left: 100%; }
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: #111827;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        .beliefs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .belief-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e5e7eb;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            transform: translateY(0);
+            max-height: none;
+        }
+
+        .belief-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #111827 0%, #374151 50%, #111827 100%);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .belief-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(17, 24, 39, 0.02) 0%, rgba(55, 65, 81, 0.01) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .belief-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 8px 16px rgba(0, 0, 0, 0.1);
+            border-color: #d1d5db;
+        }
+
+        .belief-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .belief-card:hover::after {
+            opacity: 1;
+        }
+
+        .belief-number {
+            display: inline-block;
+            background: linear-gradient(135deg, #111827 0%, #374151 100%);
+            color: white;
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            text-align: center;
+            line-height: 52px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px rgba(17, 24, 39, 0.3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            z-index: 2;
+        }
+
+        .belief-card:hover .belief-number {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 6px 16px rgba(17, 24, 39, 0.4);
+        }
+
+        .belief-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .belief-content {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: #374151;
+        }
+
+        .belief-content p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .belief-content p:last-of-type {
+            margin-bottom: 1.5rem;
+        }
+
+        .verse-reference {
+            display: inline;
+            background: none;
+            color: #111827;
+            padding: 0;
+            border-radius: 0;
+            font-size: inherit;
+            font-weight: 700;
+            margin: 0 0.2rem 0 0;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            font-family: 'Times New Roman', Times, serif;
+            border: none;
+            overflow: visible;
+            text-decoration: underline;
+            text-decoration-color: #111827;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 3px;
+        }
+
+        .verse-reference::before {
+            display: none;
+        }
+
+        .verse-reference:hover {
+            background: none;
+            transform: none;
+            box-shadow: none;
+            border: none;
+            color: #374151;
+            text-decoration-color: #374151;
+        }
+
+        .verse-reference:hover::before {
+            display: none;
+        }
+
+        .verse-reference::after {
+            content: ';';
+            margin-right: 0.3rem;
+            color: #6b7280;
+        }
+
+        .verse-reference:last-child::after {
+            content: '.';
+        }
+
+        .tooltip {
+            position: absolute;
+            background: linear-gradient(145deg, #111827 0%, #1f2937 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            max-width: 350px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25), 0 8px 16px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transform: translateY(10px) scale(0.95);
+        }
+
+        .tooltip::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 8px solid #111827;
+            filter: drop-shadow(0 -2px 4px rgba(0, 0, 0, 0.1));
+        }
+
+        .tooltip::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.05) 0%, transparent 50%, rgba(255, 255, 255, 0.05) 100%);
+            border-radius: 10px;
+            pointer-events: none;
+        }
+
+        .tooltip.show {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translateY(0) scale(1);
+        }
+
+        .tooltip strong {
+            color: #fbbf24;
+            font-weight: 700;
+        }
+
+        .verse-list {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e5e7eb;
+            line-height: 1.8;
+            font-size: 0.9rem;
+            color: #4b5563;
+            text-align: justify;
+        }
+
+        .verse-list::before {
+            content: 'Versículos clave: ';
+            font-weight: 600;
+            color: #374151;
+            font-style: italic;
+        }
+
+        .note {
+            background: linear-gradient(135deg, white 0%, #f9fafb 100%);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-top: 2rem;
+            border-left: 4px solid linear-gradient(135deg, #111827 0%, #374151 100%);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            border-right: 1px solid #e5e7eb;
+            border-top: 1px solid #e5e7eb;
+            border-bottom: 1px solid #e5e7eb;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            animation: slideInUp 0.6s ease-out 0.5s both;
+        }
+
+        .note::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(135deg, #111827 0%, #374151 100%);
+        }
+
+        .note:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+        }
+
+        .note p {
+            font-style: italic;
+            color: #6b7280;
+            font-size: 0.95rem;
+        }
+
+        /* Mobile First - Base styles for mobile devices */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0.75rem;
+            }
+
+            .header {
+                padding: 2rem 1.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .header h1 {
+                font-size: 1.75rem;
+                line-height: 1.2;
+            }
+
+            .header p {
+                font-size: 1rem;
+            }
+
+            .beliefs-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .belief-card {
+                padding: 1.25rem;
+                border-radius: 12px;
+            }
+
+            .belief-number {
+                width: 44px;
+                height: 44px;
+                line-height: 44px;
+                font-size: 1rem;
+                margin-bottom: 1rem;
+            }
+
+            .belief-title {
+                font-size: 1.1rem;
+                margin-bottom: 1rem;
+            }
+
+            .belief-content {
+                font-size: 0.9rem;
+                line-height: 1.7;
+            }
+
+            .belief-content p {
+                margin-bottom: 0.8rem;
+                text-align: left;
+            }
+
+            .verse-reference {
+                font-size: 0.85rem;
+                font-weight: 700;
+                padding: 0;
+                margin: 0 0.15rem 0 0;
+                text-decoration-thickness: 1.5px;
+                text-underline-offset: 2px;
+            }
+
+            .verse-list {
+                font-size: 0.85rem;
+                line-height: 1.7;
+                text-align: left;
+            }
+
+            .tooltip {
+                max-width: 280px;
+                font-size: 0.8rem;
+                padding: 1rem;
+            }
+
+            .note {
+                padding: 1.5rem;
+                margin-top: 1.5rem;
+            }
+        }
+
+        /* Tablets and small laptops */
+        @media (min-width: 481px) and (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .header {
+                padding: 2.5rem 2rem;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .beliefs-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .belief-card {
+                padding: 2rem;
+            }
+
+            .belief-number {
+                width: 48px;
+                height: 48px;
+                line-height: 48px;
+                font-size: 1.1rem;
+            }
+
+            .belief-title {
+                font-size: 1.2rem;
+            }
+
+            .verse-list {
+                font-size: 0.88rem;
+            }
+
+            .verse-reference {
+                font-size: 0.88rem;
+            }
+
+            .tooltip {
+                max-width: 300px;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Large tablets and small desktops */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .beliefs-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.75rem;
+            }
+
+            .belief-card {
+                padding: 2.25rem;
+            }
+
+            .tooltip {
+                max-width: 320px;
+            }
+        }
+
+        /* Extra large screens */
+        @media (min-width: 1400px) {
+            .container {
+                max-width: 1400px;
+            }
+
+            .beliefs-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2.5rem;
+            }
+
+            .belief-card {
+                padding: 3rem;
+            }
+
+            .header h1 {
+                font-size: 3rem;
+            }
+
+            .header p {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Animations for card entrance */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .belief-card {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .belief-card.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .belief-card:nth-child(2n) .belief-number {
+            background: linear-gradient(135deg, #374151 0%, #111827 100%);
+        }
+
+        .belief-card:nth-child(3n) .belief-number {
+            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+        }
+
+        /* Focus animation for verse references */
+        @keyframes textGlow {
+            0%, 100% { text-shadow: 0 0 0 rgba(17, 24, 39, 0.4); }
+            50% { text-shadow: 0 0 8px rgba(17, 24, 39, 0.6); }
+        }
+
+        .verse-reference:focus {
+            outline: none;
+            animation: textGlow 1s infinite;
+            color: #111827;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Iglesia Bautista Filadelfia Curicó</h1>
+            <p>Declaración de Fe</p>
+        </div>
+
+        <div class="beliefs-grid">
+            <div class="belief-card">
+                <div class="belief-number">1</div>
+                <h2 class="belief-title">Las Sagradas Escrituras</h2>
+                <div class="belief-content">
+                    <p>Creemos que la <strong>Biblia</strong>, compuesta por los 66 libros del Antiguo y Nuevo Testamento, es la <strong>Palabra de Dios</strong>: <strong>inspirada</strong> por el Espíritu Santo, <strong>infalible</strong>, con <strong>autoridad suprema</strong> y sin error en sus escritos originales. Afirmamos que la Biblia es la <strong>autoridad final</strong> en todas las áreas de la vida del creyente individual y de la Iglesia como cuerpo colectivo.</p>
+                    
+                    <p>Valoramos profundamente la <strong>predicación</strong>, la <strong>enseñanza</strong> y el <strong>estudio personal</strong> de la Palabra de Dios. Aunque la Iglesia proporciona recursos y herramientas para facilitar su comprensión, es responsabilidad de cada creyente estudiar las Escrituras con dedicación y esfuerzo.</p>
+                    
+                    <div class="verse-list">
+                        <span class="verse-reference" data-verse="Toda la Escritura es inspirada por Dios, y útil para enseñar, para redargüir, para corregir, para instruir en justicia, a fin de que el hombre de Dios sea perfecto, enteramente preparado para toda buena obra.">2 Timoteo 3:16-17</span>
+                        <span class="verse-reference" data-verse="Entendiendo primero esto, que ninguna profecía de la Escritura es de interpretación privada, porque nunca la profecía fue traída por voluntad humana, sino que los santos hombres de Dios hablaron siendo inspirados por el Espíritu Santo.">2 Pedro 1:21</span>
+                        <span class="verse-reference" data-verse="Y no puede ser quebrantada la Escritura.">Juan 10:35</span>
+                        <span class="verse-reference" data-verse="La ley de Jehová es perfecta, que convierte el alma; el testimonio de Jehová es fiel, que hace sabio al sencillo.">Salmo 19:7-10</span>
+                        <span class="verse-reference" data-verse="Para siempre, oh Jehová, permanece tu palabra en los cielos.">Salmo 119:89, 165</span>
+                        <span class="verse-reference" data-verse="Glorificaré tu nombre para siempre.">Salmo 138:2b</span>
+                        <span class="verse-reference" data-verse="El cielo y la tierra pasarán, pero mis palabras no pasarán.">Mateo 24:35</span>
+                        <span class="verse-reference" data-verse="Estos eran más nobles que los que estaban en Tesalónica, pues recibieron la palabra con toda solicitud, escudriñando cada día las Escrituras para ver si estas cosas eran así.">Hechos 17:10-11</span>
+                        <span class="verse-reference" data-verse="Escudriñad las Escrituras; porque a vosotros os parece que en ellas tenéis la vida eterna; y ellas son las que dan testimonio de mí.">Juan 5:39</span>
+                        <span class="verse-reference" data-verse="¡Oh, cuánto amo yo tu ley! Todo el día es ella mi meditación.">Salmo 119:97, 99</span>
+                        <span class="verse-reference" data-verse="Sino que en la ley de Jehová está su delicia, y en su ley medita de día y de noche.">Salmo 1:2</span>
+                        <span class="verse-reference" data-verse="Hijo mío, si recibieres mis palabras, y mis mandamientos guardares dentro de ti.">Proverbios 2:1-5</span>
+                        <span class="verse-reference" data-verse="La palabra de Cristo more en abundancia en vosotros, enseñándoos y exhortándoos unos a otros en toda sabiduría.">Colosenses 3:16</span>
+                        <span class="verse-reference" data-verse="desead, como niños recién nacidos, la leche espiritual no adulterada, para que por ella crezcáis para salvación.">1 Pedro 2:2</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="belief-card">
+                <div class="belief-number">2</div>
+                <h2 class="belief-title">Dios</h2>
+                <div class="belief-content">
+                    <p>Creemos en un solo <strong>Dios</strong>, que existe eternamente en <strong>tres personas</strong>: Dios Padre, Dios Hijo y Dios Espíritu Santo. Cada una de las personas de la <strong>Trinidad</strong> es plenamente Dios: <strong>eterno</strong>, <strong>absoluto</strong> y es el único digno de <strong>adoración</strong>. Creemos que es el <strong>Creador</strong> de los cielos y la tierra.</p>
+                    <div class="verse-list">
+                        <span class="verse-reference" data-verse="Oye, Israel: Jehová nuestro Dios, Jehová uno es.">Deuteronomio 6:4</span>
+                        <span class="verse-reference" data-verse="Decid a las gentes: Jehová reina. También afirmó el mundo, no será conmovido; Juzgará a los pueblos en rectitud.">Isaías 45:21-22</span>
+                        <span class="verse-reference" data-verse="En el principio creó Dios los cielos y la tierra.">Génesis 1:1</span>
+                        <span class="verse-reference" data-verse="Porque él dijo, y fue hecho; Él mandó, y existió.">Isaías 45:18</span>
+                        <span class="verse-reference" data-verse="Todas las cosas por él fueron hechas, y sin él nada de lo que ha sido hecho, fue hecho.">Juan 1:3</span>
+                        <span class="verse-reference" data-verse="Porque en él fueron creadas todas las cosas, las que hay en los cielos y las que hay en la tierra, visibles e invisibles.">Colosenses 1:16</span>
+                        <span class="verse-reference" data-verse="Por la fe entendemos haber sido constituido el universo por la palabra de Dios.">Hebreos 11:3</span>
+                        <span class="verse-reference" data-verse="En el principio era el Verbo, y el Verbo era con Dios, y el Verbo era Dios.">Juan 1:1-14</span>
+                        <span class="verse-reference" data-verse="Porque tres son los que dan testimonio en el cielo: el Padre, el Verbo y el Espíritu Santo; y estos tres son uno.">1 Juan 5:7</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="belief-card">
+                <div class="belief-number">3</div>
+                <h2 class="belief-title">El Mesías / Jesucristo</h2>
+                <div class="belief-content">
+                    <p>Creemos que Dios el Hijo se hizo <strong>hombre</strong> en la persona de <strong>Jesucristo</strong>. Fue <strong>concebido</strong> por el Espíritu Santo, nació de la <strong>Virgen María</strong> y vivió una vida <strong>sin pecado</strong> (pues en Él no había pecado).</p>
+                    
+                    <p>Creemos que <strong>Jesús de Nazaret</strong> es el <strong>Mesías</strong>, el Cristo de Dios, anunciado por los profetas bíblicos. Él es la <strong>segunda Persona de la Trinidad</strong>, Dios el Hijo, quien existe eternamente y vino a la tierra como Dios encarnado.</p>
+                    
+                    <p>Creemos que Jesús <strong>murió en la cruz</strong> por los pecados del mundo, fue sepultado durante <strong>tres días y tres noches</strong>, y que Dios el Padre lo <strong>resucitó físicamente</strong> de entre los muertos. Después de su resurrección, Jesús se apareció a <strong>más de 500 testigos</strong>, y luego de 40 días <strong>ascendió</strong> nuevamente al cielo, donde actualmente está <strong>sentado a la diestra del Padre</strong> como nuestro gran <strong>Sumo Sacerdote</strong>, y permanecerá allí hasta que todos sus enemigos sean puestos por estrado de sus pies.</p>
+                    
+                    <div class="verse-list">
+                        <span class="verse-reference" data-verse="En el principio era el Verbo, y el Verbo era con Dios, y el Verbo era Dios... Y aquel Verbo fue hecho carne, y habitó entre nosotros.">Juan 1:1-14</span>
+                        <span class="verse-reference" data-verse="He aquí el Cordero de Dios, que quita el pecado del mundo.">Juan 1:29</span>
+                        <span class="verse-reference" data-verse="Y él es la propiciación por nuestros pecados; y no solamente por los nuestros, sino también por los de todo el mundo.">1 Juan 2:2</span>
+                        <span class="verse-reference" data-verse="El nacimiento de Jesucristo fue así: Estando desposada María su madre con José, antes que se juntasen, se halló que había concebido del Espíritu Santo.">Mateo 1:18-25</span>
+                        <span class="verse-reference" data-verse="Al que no conoció pecado, por nosotros lo hizo pecado, para que nosotros fuésemos hechos justicia de Dios en él.">2 Corintios 5:21</span>
+                        <span class="verse-reference" data-verse="Porque también Cristo padeció una sola vez por los pecados, el justo por los injustos, para llevarnos a Dios.">1 Pedro 3:18</span>
+                        <span class="verse-reference" data-verse="Porque primeramente os he enseñado lo que asimismo recibí: Que Cristo murió por nuestros pecados, conforme a las Escrituras; y que fue sepultado, y que resucitó al tercer día, conforme a las Escrituras.">1 Corintios 15:3-4</span>
+                        <span class="verse-reference" data-verse="Pero éste, habiendo ofrecido una vez para siempre un solo sacrificio por los pecados, se ha sentado a la diestra de Dios, de ahí en adelante esperando hasta que sus enemigos sean puestos por estrado de sus pies.">Hebreos 10:12-13</span>
+                        <span class="verse-reference" data-verse="Ahora bien, el punto principal de lo que venimos diciendo es que tenemos tal sumo sacerdote, el cual se sentó a la diestra del trono de la Majestad en los cielos.">Hebreos 8:1</span>
+                        <span class="verse-reference" data-verse="Por tanto, teniendo un gran sumo sacerdote que traspasó los cielos, Jesús el Hijo de Dios, retengamos nuestra profesión.">Hebreos 4:14-16</span>
+                        <span class="verse-reference" data-verse="¿Quién es el que condenará? Cristo es el que murió; más aun, el que también resucitó, el que además está a la diestra de Dios, el que también intercede por nosotros.">Romanos 8:34</span>
+                        <span class="verse-reference" data-verse="Porque en él habita corporalmente toda la plenitud de la Deidad.">Colosenses 2:9</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="belief-card">
+                <div class="belief-number">4</div>
+                <h2 class="belief-title">El Espíritu Santo</h2>
+                <div class="belief-content">
+                    <p>Creemos que el <strong>Espíritu Santo</strong> fue enviado por el Padre y el Hijo para <strong>convencer</strong> al mundo de pecado, justicia y juicio. Creemos que el Espíritu Santo <strong>regenera</strong>, <strong>habita</strong> y <strong>sella</strong> a los creyentes en el Señor Jesucristo, y les da el <strong>poder</strong> para vivir como sus <strong>testigos</strong>.</p>
+                    
+                    <p>Afirmamos la realidad del <strong>ministerio actual</strong> del Espíritu Santo, quien mora y obra a través del creyente, distribuyendo <strong>diversos dones</strong> según su voluntad.</p>
+                    
+                    <div class="verse-list">
+                        <span class="verse-reference" data-verse="Y yo rogaré al Padre, y os dará otro Consolador, para que esté con vosotros para siempre: el Espíritu de verdad.">Juan 14:16-17</span>
+                        <span class="verse-reference" data-verse="Pero cuando él venga, convencerá al mundo de pecado, de justicia y de juicio.">Juan 16:7-11</span>
+                        <span class="verse-reference" data-verse="nos salvó, no por obras de justicia que nosotros hubiéramos hecho, sino por su misericordia, por el lavamiento de la regeneración y por la renovación en el Espíritu Santo.">Tito 3:5-6</span>
+                        <span class="verse-reference" data-verse="Mas vosotros no vivís según la carne, sino según el Espíritu, si es que el Espíritu de Dios mora en vosotros.">Romanos 8:9</span>
+                        <span class="verse-reference" data-verse="¿O ignoráis que vuestro cuerpo es templo del Espíritu Santo, el cual está en vosotros, el cual tenéis de Dios, y que no sois vuestros?">1 Corintios 6:19-20</span>
+                        <span class="verse-reference" data-verse="En él también vosotros, habiendo oído la palabra de verdad, el evangelio de vuestra salvación, y habiendo creído en él, fuisteis sellados con el Espíritu Santo de la promesa.">Efesios 1:13-14</span>
+                        <span class="verse-reference" data-verse="Pero recibiréis poder, cuando haya venido sobre vosotros el Espíritu Santo, y me seréis testigos.">Hechos 1:8</span>
+                        <span class="verse-reference" data-verse="De manera que, teniendo diferentes dones, según la gracia que nos es dada.">Romanos 12:6-8</span>
+                        <span class="verse-reference" data-verse="Cada uno según el don que ha recibido, minístrelo a los otros, como buenos administradores de la multiforme gracia de Dios.">1 Pedro 4:10-11</span>
+                        <span class="verse-reference" data-verse="Ahora bien, hay diversidad de dones, pero el Espíritu es el mismo. Y hay diversidad de ministerios, pero el Señor es el mismo. Y hay diversidad de operaciones, pero Dios, que hace todas las cosas en todos, es el mismo. Pero a cada uno le es dada la manifestación del Espíritu para provecho.">1 Corintios 12:4-7</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="belief-card">
+                <div class="belief-number">5</div>
+                <h2 class="belief-title">La Creación</h2>
+                <div class="belief-content">
+                    <p>Creemos que Dios <strong>creó</strong> los cielos y la tierra en <strong>seis días de 24 horas</strong> y <strong>descansó</strong> el séptimo día, hace unos <strong>6,000 años</strong>.</p>
+                    <div class="verse-list">
+                        <span class="verse-reference" data-verse="En el principio creó Dios los cielos y la tierra.">Génesis 1:1</span>
+                        <span class="verse-reference" data-verse="Y acabó Dios en el día séptimo la obra que hizo; y reposó el día séptimo de toda la obra que hizo.">Génesis 2:2</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="belief-card">
+                <div class="belief-number">6</div>
+                <h2 class="belief-title">La Condición del Hombre</h2>
+                <div class="belief-content">
+                    <p>Creemos que, como resultado del <strong>pecado de Adán</strong>, cada persona nace y permanece <strong>espiritualmente muerta</strong> en su pecado y que debe <strong>nacer espiritualmente de nuevo</strong> para ser salva y heredar la vida eterna en el Reino de Dios.</p>
+                    <div class="verse-list">
+                        <span class="verse-reference" data-verse="Por tanto, como el pecado entró en el mundo por un hombre, y por el pecado la muerte, así la muerte pasó a todos los hombres, por cuanto todos pecaron.">Romanos 5:12</span>
+                        <span class="verse-reference" data-verse="¿Qué ventaja tiene, pues, el judío? ¿O de qué aprovecha la circuncisión?">Romanos 3:1</span>
+                        <span class="verse-reference" data-verse="Por cuanto todos pecaron, y están destituidos de la gloria de Dios.">Romanos 3:23</span>
+                        <span class="verse-reference" data-verse="Y él os dio vida a vosotros, cuando estabais muertos en vuestros delitos y pecados... Pero Dios, que es rico en misericordia, por su gran amor con que nos amó, aun estando nosotros muertos en pecados, nos dio vida juntamente con Cristo.">Efesios 2:1-5</span>
+                        <span class="verse-reference" data-verse="Respondió Jesús: De cierto, de cierto te digo, que el que no naciere de nuevo, no puede ver el reino de Dios... Lo que es nacido de la carne, carne es; y lo que es nacido del Espíritu, espíritu es.">Juan 3:3-7</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="belief-card">
+                <div class="belief-number">7</div>
+                <h2 class="belief-title">La Salvación / Redención</h2>
+                <div class="belief-content">
+                    <p>Creemos que <strong>Jesucristo</strong> es el <strong>único Salvador</strong> del mundo. Afirmamos que la <strong>fe</strong> en el <strong>sacrificio redentor</strong> de Jesús es la única manera en que el ser humano puede nacer de nuevo y ser salvo de la ira de Dios y del tormento eterno. La <strong>salvación no es por obras</strong>; es un <strong>regalo de Dios</strong> que se recibe únicamente por <strong>gracia</strong>, mediante la <strong>fe</strong> en Él.</p>
+                    
+                    <p>Creemos que la salvación es un <strong>regalo de Dios</strong> ofrecido a toda la humanidad por gracia, por medio de la fe en Jesucristo. Esta salvación está disponible para <strong>todo aquel que cree</strong>. Afirmamos que Dios llama a todas las personas al <strong>arrepentimiento</strong> y no desea que ninguno perezca, sino que todos procedan al arrepentimiento.</p>
+                    
+                    <p>Creemos en la <strong>Obra Consumada de Cristo</strong> y en su aplicación a todos aquellos que creen en Él. Creemos que todos los que creemos que Jesús es Dios, que vino a la tierra, murió por nuestros pecados, fue sepultado y resucitó al tercer día, recibirán la <strong>salvación eterna</strong>.</p>
+                    
+                    <div class="verse-list">
+                        <span class="verse-reference" data-verse="Porque primeramente os he enseñado lo que asimismo recibí: Que Cristo murió por nuestros pecados, conforme a las Escrituras; y que fue sepultado, y que resucitó al tercer día, conforme a las Escrituras.">1 Corintios 15:3-4</span>
+                        <span class="verse-reference" data-verse="Así que, como por la transgresión de uno vino la condenación a todos los hombres, de la misma manera por la justicia de uno vino a todos los hombres la justificación de vida.">Romanos 5:17-21</span>
+                        <span class="verse-reference" data-verse="Y dará a luz un hijo, y llamarás su nombre JESÚS, porque él salvará a su pueblo de sus pecados.">Mateo 1:21</span>
+                        <span class="verse-reference" data-verse="Y nosotros hemos visto y testificamos que el Padre ha enviado al Hijo, el Salvador del mundo.">1 Juan 4:14</span>
+                        <span class="verse-reference" data-verse="Jesús le dijo: Yo soy el camino, y la verdad, y la vida; nadie viene al Padre, sino por mí.">Juan 14:6</span>
+                        <span class="verse-reference" data-verse="Y en ningún otro hay salvación; porque no hay otro nombre bajo el cielo, dado a los hombres, en que podamos ser salvos.">Hechos 4:12</span>
+                        <span class="verse-reference" data-verse="Porque por gracia sois salvos por medio de la fe; y esto no de vosotros, pues es don de Dios; no por obras, para que nadie se gloríe.">Efesios 2:8-9</span>
+                        <span class="verse-reference" data-verse="que si confesares con tu boca que Jesús es el Señor, y creyeres en tu corazón que Dios le levantó de los muertos, serás salvo... porque todo aquel que invocare el nombre del Señor, será salvo.">Romanos 10:9-13</span>
+                        <span class="verse-reference" data-verse="Cuando Jesús hubo tomado el vinagre, dijo: Consumado es. Y habiendo inclinado la cabeza, entregó el espíritu.">Juan 19:30</span>
+                        <span class="verse-reference" data-verse="Porque de tal manera amó Dios al mundo, que ha dado a su Hijo unigénito, para que todo aquel que en él cree, no se pierda, mas tenga vida eterna... El que en él cree, no es condenado.">Juan 3:14-18</span>
+                        <span class="verse-reference" data-verse="Y él es la propiciación por nuestros pecados; y no solamente por los nuestros, sino también por los de todo el mundo.">1 Juan 2:2</span>
+                        <span class="verse-reference" data-verse="Mas Dios muestra su amor para con nosotros, en que siendo aún pecadores, Cristo murió por nosotros.">Romanos 5:8</span>
+                        <span class="verse-reference" data-verse="Porque la paga del pecado es muerte, mas la dádiva de Dios es vida eterna en Cristo Jesús Señor nuestro.">Romanos 6:23</span>
+                        <span class="verse-reference" data-verse="el cual quiere que todos los hombres sean salvos y vengan al conocimiento de la verdad.">1 Timoteo 2:3-6</span>
+                        <span class="verse-reference" data-verse="El Señor no retarda su promesa, según algunos la tienen por tardanza, sino que es paciente para con nosotros, no queriendo que ninguno perezca, sino que todos procedan al arrepentimiento.">2 Pedro 3:9</span>
+                        <span class="verse-reference" data-verse="Porque la gracia de Dios se ha manifestado para salvación a todos los hombres.">Tito 2:11</span>
+                        <span class="verse-reference" data-verse="Y nosotros hemos visto y testificamos que el Padre ha enviado al Hijo, el Salvador del mundo. Todo aquel que confesare que Jesús es el Hijo de Dios, Dios permanece en él, y él en Dios.">1 Juan 4:14-15</span>
+                        <span class="verse-reference" data-verse="pues la voluntad de Dios es vuestra santificación.">1 Tesalonicenses 4:3-4</span>
+                        <span class="verse-reference" data-verse="Honroso sea en todos el matrimonio, y el lecho sin mancilla; pero a los fornicarios y a los adúlteros los juzgará Dios.">Hebreos 13:4</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="belief-card">
+                <div class="belief-number">8</div>
+                <h2 class="belief-title">La Creación del Hombre</h2>
+                <div class="belief-content">
+                    <p>Creemos que Dios creó al <strong>hombre</strong> a Su <strong>imagen y semejanza</strong>, y creó sólo <strong>dos géneros</strong>: <strong>masculino y femenino</strong> (hombre y mujer). Los creó iguales en <strong>importancia</strong>, <strong>dignidad</strong> y <strong>valor</strong>.</p>
+                    
+                    <p>De acuerdo con Su propósito y diseño, Dios los creó para cumplir roles distintos pero <strong>complementarios</strong> en los contextos del <strong>matrimonio</strong>, la <strong>familia</strong> y la <strong>iglesia local</strong>.</p>
+                    
+                    <p>Creemos que el <strong>género</strong> de cada persona se determina al <strong>nacer</strong> y que el registro bíblico revela que estos dos géneros se crearon para ser <strong>complementarios</strong> entre sí.</p>
+                    
+                    <div class="verse-list">
+                        <span class="verse-reference" data-verse="Entonces dijo Dios: Hagamos al hombre a nuestra imagen, conforme a nuestra semejanza... Y creó Dios al hombre a su imagen, a imagen de Dios lo creó; varón y hembra los creó.">Génesis 1:26-28</span>
+                        <span class="verse-reference" data-verse="Mas para Adán no se halló ayuda idónea para él... Y de la costilla que Jehová Dios tomó del hombre, hizo una mujer, y la trajo al hombre.">Génesis 2:20-23</span>
+                        <span class="verse-reference" data-verse="Las casadas estén sujetas a sus propios maridos, como al Señor... Maridos, amad a vuestras mujeres, así como Cristo amó a la iglesia, y se entregó a sí mismo por ella.">Efesios 5:22-6:4</span>
+                        <span class="verse-reference" data-verse="Palabra fiel: Si alguno anhela obispado, buena obra desea. Pero es necesario que el obispo sea irreprensible, marido de una sola mujer, sobrio, prudente, decoroso, hospedador, apto para enseñar.">1 Timoteo 3:1-7</span>
+                        <span class="verse-reference" data-verse="Porque no permito a la mujer enseñar, ni ejercer dominio sobre el hombre, sino estar en silencio. Porque Adán fue formado primero, después Eva.">1 Timoteo 2:11-14</span>
+                        <span class="verse-reference" data-verse="Vosotros, maridos, igualmente, vivid con ellas sabiamente, dando honor a la mujer como a vaso más frágil, y como a coherederas de la gracia de la vida, para que vuestras oraciones no tengan estorbo.">1 Pedro 3:7</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="belief-card">
+                <div class="belief-number">9</div>
+                <h2 class="belief-title">El Matrimonio</h2>
+                <div class="belief-content">
+                    <p>Creemos que el <strong>matrimonio</strong> es una <strong>institución divina</strong>, establecida por Dios desde la <strong>creación del mundo</strong>, como un <strong>pacto sagrado</strong> sólo entre <strong>un hombre y una mujer</strong>.</p>
+                    
+                    <p>Esta unión tiene el propósito de reflejar la relación íntima y fiel entre <strong>Cristo y su Iglesia</strong>, y está diseñada para <strong>perdurar toda la vida</strong>.</p>
+                    
+                    <p>Por estas razones, sostenemos que el matrimonio, según el <strong>diseño de Dios</strong>, es únicamente entre un hombre y una mujer, y debe ser vivido como un compromiso <strong>permanente</strong>, <strong>fiel</strong> y lleno de propósito, para la gloria de Dios y el bienestar de la familia, la iglesia y la sociedad.</p>
+                    
+                    <p>Creemos que la Biblia prohíbe la <strong>actividad sexual</strong> fuera de la unión del matrimonio descrita anteriormente.</p>
+                    
+                    <div class="verse-list">
+                        <span class="verse-reference" data-verse="Por tanto, dejará el hombre a su padre y a su madre, y se unirá a su mujer, y serán una sola carne.">Génesis 2:24</span>
+                        <span class="verse-reference" data-verse="¿No habéis leído que el que los hizo al principio, varón y hembra los hizo, y dijo: Por esto el hombre dejará padre y madre, y se unirá a su mujer, y los dos serán una sola carne?">Mateo 19:4-6</span>
+                        <span class="verse-reference" data-verse="Por esto dejará el hombre a su padre y a su madre, y se unirá a su mujer, y los dos serán una sola carne. Grande es este misterio; mas yo digo esto respecto de Cristo y de la iglesia.">Efesios 5:31-33</span>
+                        <span class="verse-reference" data-verse="Ninguno se llegue a parienta próxima alguna, para descubrir su desnudez. Yo Jehová.">Levítico 18:1-30</span>
+                        <span class="verse-reference" data-verse="Por esto Dios los entregó a pasiones vergonzosas; pues aun sus mujeres cambiaron el uso natural por el que es contra naturaleza.">Romanos 1:26-27</span>
+                        <span class="verse-reference" data-verse="¿No sabéis que los injustos no heredarán el reino de Dios? No erréis; ni los fornicarios, ni los idólatras, ni los adúlteros, ni los afeminados, ni los que se echan con varones.">1 Corintios 6:9-10</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="belief-card">
+                <div class="belief-number">10</div>
+                <h2 class="belief-title">Arrebatamiento</h2>
+                <div class="belief-content">
+                    <p>Creemos que <strong>Cristo vendrá</strong> por su <strong>Iglesia</strong>, levantando a los <strong>creyentes</strong> para encontrarse con Él en el aire.</p>
+                    
+                    <p>Creemos que el <strong>arrebatamiento</strong> de los creyentes —la <strong>esperanza bienaventurada</strong>— ocurrirá antes del derramamiento de la <strong>ira de Dios</strong> (la <strong>hora de la prueba</strong>) que vendrá sobre todos los habitantes de la tierra.</p>
+                    
+                    <div class="verse-list">
+                        <span class="verse-reference" data-verse="Y esperamos de los cielos al Salvador, al Señor Jesucristo.">1 Tesalonicenses 1:10</span>
+                        <span class="verse-reference" data-verse="Porque no nos ha puesto Dios para ira, sino para alcanzar salvación por medio de nuestro Señor Jesucristo.">1 Tesalonicenses 5:9</span>
+                        <span class="verse-reference" data-verse="Aguardando la esperanza bienaventurada y la manifestación gloriosa de nuestro gran Dios y Salvador Jesucristo.">Tito 2:13</span>
+                        <span class="verse-reference" data-verse="Porque el Señor mismo con voz de mando, con voz de arcángel, y con trompeta de Dios, descenderá del cielo; y los muertos en Cristo resucitarán primero. Luego nosotros los que vivimos, los que hayamos quedado, seremos arrebatados juntamente con ellos en las nubes para recibir al Señor en el aire, y así estaremos siempre con el Señor.">1 Tesalonicenses 4:16-17</span>
+                        <span class="verse-reference" data-verse="Por cuanto me has guardado la palabra de mi paciencia, yo también te guardaré de la hora de la prueba que ha de venir sobre el mundo entero, para probar a los que moran sobre la tierra.">Apocalipsis 3:10</span>
+                        <span class="verse-reference" data-verse="He aquí, os digo un misterio: No todos dormiremos; pero todos seremos transformados, en un momento, en un abrir y cerrar de ojos, a la final trompeta; porque se tocará la trompeta, y los muertos serán resucitados incorruptibles, y nosotros seremos transformados.">1 Corintios 15:51-55</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="belief-card">
+                <div class="belief-number">11</div>
+                <h2 class="belief-title">El Reino de Cristo</h2>
+                <div class="belief-content">
+                    <p>Creemos el retorno <strong>pre-milenial</strong> de Jesucristo a la tierra, al final de los últimos <strong>siete años</strong> (la <strong>semana 70 de Daniel</strong>).</p>
+                    
+                    <p>Creemos que Cristo regresará <strong>físicamente</strong> al <strong>Monte de los Olivos</strong> con Sus santos, y establecerá Su <strong>Reino Milenial</strong> en la tierra.</p>
+                    
+                    <p>Se sentará sobre el <strong>trono de David</strong> y reinará sobre la casa de <strong>Jacob</strong> (Israel), gobernando desde <strong>Jerusalén</strong> durante <strong>mil años</strong>.</p>
+                    
+                    <div class="verse-list">
+                        <span class="verse-reference" data-verse="Vi a un ángel que descendía del cielo, con la llave del abismo, y una gran cadena en la mano... Y vi tronos, y se sentaron sobre ellos los que recibieron facultad de juzgar; y vi las almas de los decapitados por causa del testimonio de Jesús y por la palabra de Dios, los que no habían adorado a la bestia ni a su imagen, y que no recibieron la marca en sus frentes ni en sus manos; y vivieron y reinaron con Cristo mil años.">Apocalipsis 20:1-6</span>
+                        <span class="verse-reference" data-verse="Este será grande, y será llamado Hijo del Altísimo; y el Señor Dios le dará el trono de David su padre; y reinará sobre la casa de Jacob para siempre, y su reino no tendrá fin.">Lucas 1:31-33</span>
+                        <span class="verse-reference" data-verse="Porque un niño nos es nacido, hijo nos es dado, y el principado sobre su hombro; y se llamará su nombre Admirable, Consejero, Dios Fuerte, Padre Eterno, Príncipe de Paz. Lo dilatado de su imperio y la paz no tendrán límite, sobre el trono de David y sobre su reino, disponiéndolo y confirmándolo en juicio y en justicia desde ahora y para siempre.">Isaías 9:6-7</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="belief-card">
+                <div class="belief-number">12</div>
+                <h2 class="belief-title">La Resurrección Final y el Juicio</h2>
+                <div class="belief-content">
+                    <p>Creemos que después del <strong>reinado de mil años</strong> de Jesucristo, habrá una <strong>resurrección de los muertos</strong> (los no redimidos) y estos serán resucitados para juicio en el <strong>Gran Trono Blanco</strong>.</p>
+                    
+                    <p>Este juicio determina el <strong>destino eterno</strong> de cada persona. Los <strong>redimidos</strong> ya están con Cristo; los que no están en el <strong>Libro de la Vida</strong> son juzgados y condenados.</p>
+                    
+                    <div class="verse-list">
+                        <span class="verse-reference" data-verse="Y vi tronos, y se sentaron sobre ellos los que recibieron facultad de juzgar; y vi las almas de los decapitados por causa del testimonio de Jesús y por la palabra de Dios, los que no habían adorado a la bestia ni a su imagen, y que no recibieron la marca en sus frentes ni en sus manos; y vivieron y reinaron con Cristo mil años. Pero los otros muertos no volvieron a vivir hasta que se cumplieron mil años.">Apocalipsis 20:4-6</span>
+                        <span class="verse-reference" data-verse="Pero los otros muertos no volvieron a vivir hasta que se cumplieron mil años. Esta es la primera resurrección.">Apocalipsis 20:5a</span>
+                        <span class="verse-reference" data-verse="Y vi un gran trono blanco y al que estaba sentado en él, de delante del cual huyeron la tierra y el cielo, y ningún lugar se encontró para ellos. Y vi a los muertos, grandes y pequeños, de pie ante Dios; y los libros fueron abiertos, y otro libro fue abierto, el cual es el libro de la vida; y fueron juzgados los muertos por las cosas que estaban escritas en los libros, según sus obras.">Apocalipsis 20:11-12</span>
+                        <span class="verse-reference" data-verse="Y el que no se halló inscrito en el libro de la vida fue lanzado al lago de fuego.">Apocalipsis 20:15</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="belief-card">
+                <div class="belief-number">13</div>
+                <h2 class="belief-title">La Eternidad</h2>
+                <div class="belief-content">
+                    <p>Creemos que después del <strong>Juicio del Gran Trono Blanco</strong>, Dios establecerá los <strong>Nuevos Cielos</strong> y la <strong>Nueva Tierra</strong> (es decir, la <strong>Nueva Jerusalén</strong>) donde todos los <strong>creyentes</strong> morarán con Dios por la <strong>eternidad</strong> en Su Reino.</p>
+                    
+                    <p>Este es el cumplimiento de la <strong>promesa de Dios</strong> de estar con los suyos para siempre.</p>
+                    
+                    <div class="verse-list">
+                        <span class="verse-reference" data-verse="Y vi un gran trono blanco y al que estaba sentado en él, de delante del cual huyeron la tierra y el cielo, y ningún lugar se encontró para ellos... Y el que no se halló inscrito en el libro de la vida fue lanzado al lago de fuego.">Apocalipsis 20:11-15</span>
+                        <span class="verse-reference" data-verse="Vi un cielo nuevo y una tierra nueva; porque el primer cielo y la primera tierra pasaron, y el mar ya no existía más. Y yo Juan vi la santa ciudad, la nueva Jerusalén, descender del cielo, de Dios, dispuesta como una esposa ataviada para su marido. Y oí una gran voz del cielo que decía: He aquí el tabernáculo de Dios con los hombres, y él morará con ellos; y ellos serán su pueblo, y Dios mismo estará con ellos como su Dios.">Apocalipsis 21:1-4</span>
+                        <span class="verse-reference" data-verse="Pero el día del Señor vendrá como ladrón en la noche; en el cual los cielos pasarán con grande estruendo, y los elementos ardiendo serán deshechos, y la tierra y las obras que en ella hay serán quemadas... Pero nosotros esperamos, según sus promesas, cielos nuevos y tierra nueva, en los cuales mora la justicia.">2 Pedro 3:10, 13</span>
+                        <span class="verse-reference" data-verse="Porque he aquí que yo crearé nuevos cielos y nueva tierra; y de lo primero no habrá memoria, ni más vendrá al pensamiento.">Isaías 65:17</span>
+                        <span class="verse-reference" data-verse="Porque como los cielos nuevos y la nueva tierra que yo hago permanecerán delante de mí, dice Jehová, así permanecerá vuestra descendencia y vuestro nombre.">Isaías 66:22</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="belief-card">
+                <div class="belief-number">14</div>
+                <h2 class="belief-title">La Iglesia - El Cuerpo de Cristo</h2>
+                <div class="belief-content">
+                    <p>Creemos que la <strong>Iglesia</strong>, el <strong>Cuerpo de Cristo</strong>, está formada por todos aquellos que han sido <strong>redimidos</strong> por la fe en Jesucristo, tanto <strong>judíos como gentiles</strong>, unidos en un solo pueblo bajo el <strong>Nuevo Pacto</strong>.</p>
+                    
+                    <p>La Iglesia no es una <strong>institución humana</strong> sino una <strong>comunidad espiritual</strong> compuesta por todos los que confiesan a Jesús como <strong>Señor y Salvador</strong>, y han recibido el <strong>Espíritu Santo</strong>.</p>
+                    
+                    <p>Creemos que la iglesia fue <strong>establecida por Jesucristo</strong>, bajo la voluntad y plan de <strong>Dios Padre</strong>.</p>
+                    
+                    <p>Creemos que el propósito principal de la Iglesia es <strong>glorificar a Dios</strong> en todo lo que hace. Esto incluye <strong>adorarlo</strong>, exaltar Su nombre, y reflejar Su carácter en el mundo.</p>
+                    
+                    <p>Creemos que la iglesia tiene la <strong>misión</strong> de llevar el mensaje de salvación a todo el mundo, predicando el <strong>Evangelio</strong>, y haciendo <strong>discípulos</strong> de todas las naciones. Es responsabilidad de la iglesia facilitar, modelar y alentar la predicación de las <strong>buenas nuevas de Cristo</strong> a toda la humanidad.</p>
+                    
+                    <p>Creemos que el <strong>Evangelismo personal</strong> es una forma eficaz de llevar a una persona a Cristo a través de <strong>relaciones personales</strong>.</p>
+                    
+                    <p>Creemos que la Iglesia tiene el propósito de <strong>edificar y fortalecer</strong> la fe de los creyentes, ayudándolos a crecer espiritualmente mediante la <strong>enseñanza de la Palabra</strong>, la predicación del evangelio, la <strong>comunión</strong> entre hermanos y la <strong>adoración</strong> a Dios.</p>
+                    
+                    <p>Creemos que la Iglesia es el <strong>Cuerpo de Cristo</strong> y cada miembro tiene un papel importante en la obra de Dios. Todos los creyentes son llamados a vivir en <strong>unidad</strong>, <strong>amor</strong> y a servirse unos a otros mediante sus <strong>dones y talentos</strong>.</p>
+                    
+                    <p>Creemos que la Iglesia debe ser un lugar donde los creyentes puedan experimentar la <strong>comunión</strong> y el <strong>amor fraternal</strong>, apoyándose mutuamente en la fe, orando unos por otros, y viviendo en unidad.</p>
+                    
+                    <p>Creemos que la Iglesia tiene la responsabilidad de ser <strong>luz y sal</strong> en el mundo, mostrando a Cristo a través de sus obras y testimonio.</p>
+                    
+                    <p>Creemos que la Iglesia está llamada a ser un lugar de <strong>adoración y oración</strong>, donde los creyentes se acercan a Dios en <strong>espíritu y en verdad</strong>, y experimentan la presencia de Dios en su vida individual y colectiva.</p>
+                    
+                    <div class="verse-list">
+                        <span class="verse-reference" data-verse="Porque por un solo Espíritu fuimos todos bautizados en un cuerpo, sean judíos o griegos, sean esclavos o libres; y a todos se nos dio a beber de un mismo Espíritu.">1 Corintios 12:12-13</span>
+                        <span class="verse-reference" data-verse="Porque él es nuestra paz, que de ambos pueblos hizo uno, derribando la pared intermedia de separación, aboliendo en su carne las enemistades, la ley de los mandamientos expresados en ordenanzas, para crear en sí mismo de los dos un solo y nuevo hombre, haciendo la paz, y mediante la cruz reconciliar con Dios a ambos en un solo cuerpo, matando en ella las enemistades.">Efesios 2:14-16</span>
+                        <span class="verse-reference" data-verse="Y por esto es mediador de un nuevo pacto, para que interviniendo muerte para la remisión de las transgresiones que había bajo el primer pacto, los llamados reciban la promesa de la herencia eterna.">Hebreos 9:15</span>
+                        <span class="verse-reference" data-verse="que los gentiles son coherederos y miembros del mismo cuerpo, y copartícipes de la promesa en Cristo Jesús por medio del evangelio.">Efesios 3:6</span>
+                        <span class="verse-reference" data-verse="Si, pues, coméis o bebéis, o hacéis otra cosa, hacedlo todo para la gloria de Dios.">1 Corintios 10:31</span>
+                        <span class="verse-reference" data-verse="Por tanto, id, y haced discípulos a todas las naciones, bautizándolos en el nombre del Padre, y del Hijo, y del Espíritu Santo; enseñándoles que guarden todas las cosas que os he mandado; y he aquí yo estoy con vosotros todos los días, hasta el fin del mundo.">Mateo 28:19-20</span>
+                        <span class="verse-reference" data-verse="Y él mismo constituyó a unos, apóstoles; a otros, profetas; a otros, evangelistas; a otros, pastores y maestros, a fin de perfeccionar a los santos para la obra del ministerio, para la edificación del cuerpo de Cristo.">Efesios 4:11-12</span>
+                        <span class="verse-reference" data-verse="Vosotros, pues, sois el cuerpo de Cristo, y miembros cada uno en particular.">1 Corintios 12:27</span>
+                        <span class="verse-reference" data-verse="Un mandamiento nuevo os doy: Que os améis unos a otros; como yo os he amado, que también os améis unos a otros. En esto conocerán todos que sois mis discípulos, si tuviereis amor los unos con los otros.">Juan 13:34-35</span>
+                        <span class="verse-reference" data-verse="Vosotros sois la luz del mundo; una ciudad asentada sobre un monte no se puede esconder. Ni se enciende una luz y se pone debajo de un almud, sino sobre el candelero, y alumbra a todos los que están en casa. Así alumbre vuestra luz delante de los hombres, para que vean vuestras buenas obras, y glorifiquen a vuestro Padre que está en los cielos.">Mateo 5:14-16</span>
+                        <span class="verse-reference" data-verse="Y perseveraban en la doctrina de los apóstoles, en la comunión unos con otros, en el partimiento del pan y en las oraciones.">Hechos 2:42</span>
+                        <span class="verse-reference" data-verse="Antes de la fiesta de la pascua, sabiendo Jesús que su hora había llegado para que pasase de este mundo al Padre, como había amado a los suyos que estaban en el mundo, los amó hasta el fin... Pues si yo, el Señor y el Maestro, he lavado vuestros pies, vosotros también debéis lavaros los pies los unos a los otros.">Juan 13:1-17</span>
+                        <span class="verse-reference" data-verse="Porque vosotros, hermanos, a libertad fuisteis llamados; solamente que no uséis la libertad como ocasión para la carne, sino servios por amor los unos a los otros.">Gálatas 5:13</span>
+                        <span class="verse-reference" data-verse="¿Y cómo predicarán si no fueren enviados? Como está escrito: ¡Cuán hermosos son los pies de los que anuncian la paz, de los que anuncian buenas nuevas!">Romanos 10:14-15</span>
+                        <span class="verse-reference" data-verse="Ya no hay judío ni griego; no hay esclavo ni libre; no hay varón ni mujer; porque todos vosotros sois uno en Cristo Jesús.">Gálatas 3:28</span>
+                        <span class="verse-reference" data-verse="y él es la cabeza del cuerpo que es la iglesia, él que es el principio, el primogénito de entre los muertos, para que en todo tenga la preeminencia.">Colosenses 1:18</span>
+                        <span class="verse-reference" data-verse="La palabra de Cristo more en abundancia en vosotros, enseñándoos y exhortándoos unos a otros en toda sabiduría, cantando con gracia en vuestros corazones al Señor con salmos e himnos y cánticos espirituales.">Colosenses 3:16</span>
+                        <span class="verse-reference" data-verse="Y no dejéis de congregaros, como algunos tienen por costumbre, sino exhortaos; y tanto más, cuanto veis que aquel día se acerca.">Hebreos 10:24-25</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="belief-card">
+                <div class="belief-number">15</div>
+                <h2 class="belief-title">El Liderazgo de la Iglesia</h2>
+                <div class="belief-content">
+                    <p>Creemos que el <strong>liderazgo</strong> dentro de la Iglesia es un <strong>llamado sagrado</strong> establecido por Dios, con el propósito de <strong>pastorear</strong>, <strong>enseñar</strong>, <strong>guiar</strong> y <strong>cuidar</strong> del pueblo de Dios en obediencia a Su Palabra.</p>
+                    
+                    <p>El liderazgo debe ejercerse con <strong>integridad</strong>, <strong>humildad</strong>, <strong>amor</strong>, y siempre bajo la autoridad de <strong>Jesucristo</strong>, quien es la <strong>Cabeza de la Iglesia</strong>.</p>
+                    
+                    <p>Creemos que la Biblia establece <strong>requisitos claros</strong> para quienes ocupan cargos de liderazgo en la Iglesia, especialmente para los <strong>obispos o ancianos</strong> (también conocidos como pastores). Estos líderes deben tener un <strong>testimonio irreprensible</strong>, tanto dentro como fuera de la iglesia.</p>
+                    
+                    <p>Creemos y sostenemos firmemente que el <strong>liderazgo pastoral/ancianos</strong> debe estar reservado a <strong>varones</strong>, conforme al <strong>modelo bíblico</strong> establecido en las Escrituras, siguiendo el <strong>diseño de Dios</strong> reflejado desde la creación. Esta es una convicción que consideramos esencial para nuestra enseñanza y práctica ministerial.</p>
+                    
+                    <div class="verse-list">
+                        <span class="verse-reference" data-verse="Porque no permito a la mujer enseñar, ni ejercer dominio sobre el hombre, sino estar en silencio. Porque Adán fue formado primero, después Eva.">1 Timoteo 2:12-14</span>
+                        <span class="verse-reference" data-verse="Palabra fiel: Si alguno anhela obispado, buena obra desea. Pero es necesario que el obispo sea irreprensible, marido de una sola mujer, sobrio, prudente, decoroso, hospedador, apto para enseñar; no dado al vino, no pendenciero, no codicioso de ganancias deshonestas, sino amable, apacible, no avaro; que gobierne bien su casa, que tenga a sus hijos en sujeción con toda honestidad.">1 Timoteo 3:1-7</span>
+                        <span class="verse-reference" data-verse="vuestras mujeres callen en las congregaciones; porque no les es permitido hablar, sino que estén sujetas, como también la ley lo dice. Y si quieren aprender algo, pregunten en casa a sus maridos; porque es indecoroso que una mujer hable en la congregación.">1 Corintios 14:34-35</span>
+                        <span class="verse-reference" data-verse="Por esta causa te dejé en Creta, para que corrigieses lo deficiente, y establecieses ancianos en cada ciudad, así como yo te mandé; el que fuere irreprensible, marido de una sola mujer, y tenga hijos creyentes que no estén acusados de disolución ni de rebeldía.">Tito 1:5-6</span>
+                        <span class="verse-reference" data-verse="Obedeced a vuestros pastores, y sujetaos a ellos; porque ellos velan por vuestras almas, como quienes han de dar cuenta; para que lo hagan con alegría, y no quejándose, porque esto no os es provechoso. Orad por nosotros; pues confiamos en que tenemos buena conciencia, deseando conducirnos bien en todo.">Hebreos 13:17-18</span>
+                        <span class="verse-reference" data-verse="Los ancianos que gobiernan bien, sean tenidos por dignos de doble honor, mayormente los que trabajan en predicar y enseñar.">1 Timoteo 5:17</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="belief-card">
+                <div class="belief-number">16</div>
+                <h2 class="belief-title">Los Creyentes en Cristo</h2>
+                <div class="belief-content">
+                    <p>Creemos que el propósito de cada <strong>creyente en Cristo</strong>, en cuanto al <strong>amor a Dios</strong> y al <strong>crecimiento espiritual</strong>, se centra en una vida <strong>transformada</strong> por la gracia de Dios. Cada cristiano debe buscar reflejar el <strong>amor y la santidad</strong> de Dios en su vida diaria.</p>
+                    
+                    <p><strong>Amar a Dios con todo el corazón:</strong> El amor a Dios es la <strong>base de la vida cristiana</strong>. Jesús enseñó que el primer y más grande mandamiento es amar a Dios con todo el corazón, alma, mente y fuerza. Este amor se demuestra de manera activa, <strong>obedeciendo Su palabra</strong>, viviendo en <strong>comunión</strong> con Él y rindiendo todas las áreas de nuestra vida a Su voluntad.</p>
+                    
+                    <p><strong>El crecimiento espiritual</strong> del creyente es el proceso mediante el cual el creyente es transformado cada vez más a la <strong>imagen de Jesucristo</strong>. Esto implica un <strong>cambio interior</strong>, donde el Espíritu Santo purifica el corazón y la mente del creyente, y pone orden en todas las áreas de su vida mediante la Palabra de Dios.</p>
+                    
+                    <p>El propósito del crecimiento espiritual incluye: <strong>Conocer más a Cristo</strong> - profundizar en la relación con Él y en el entendimiento de Su obra. <strong>Madurar en la fe</strong> - crecer en la fe, aprendiendo a vivir conforme a la voluntad de Dios y reflejando Su carácter en todas nuestras acciones. <strong>Fruto del Espíritu</strong> - a medida que crecemos espiritualmente, el Espíritu Santo produce en nosotros el fruto del Espíritu, como el amor, la paz, la paciencia, la bondad y la fidelidad.</p>
+                    
+                    <p><strong>Servir a Dios y a los demás en amor:</strong> El amor a Dios se expresa no solo en adoración, sino también en el <strong>servicio a los demás</strong>. El propósito del creyente incluye servir a Dios y a los demás con amor y <strong>humildad</strong>, siguiendo el ejemplo de Jesús, quien vino no para ser servido, sino para servir.</p>
+                    
+                    <p><strong>Vivir una vida de santidad:</strong> El llamado del creyente es reflejar la <strong>santidad de Dios</strong> en su vida. Dios nos llama a ser <strong>santos</strong> como Él es santo, y eso debe manifestarse en nuestra <strong>conducta diaria</strong> y en nuestras decisiones.</p>
+                    
+                    <p><strong>Ser testigos de Cristo:</strong> Una parte esencial del propósito de cada creyente es <strong>compartir su fe</strong> y testificar del amor de Dios a otros, llevando el mensaje del <strong>Evangelio</strong> al mundo.</p>
+                    
+                    <div class="verse-list">
+                        <span class="verse-reference" data-verse="Jesús le dijo: Amarás al Señor tu Dios con todo tu corazón, y con toda tu alma, y con toda tu mente. Este es el primero y grande mandamiento.">Mateo 22:37-38</span>
+                        <span class="verse-reference" data-verse="Si me amáis, guardad mis mandamientos.">Juan 14:15</span>
+                        <span class="verse-reference" data-verse="Nosotros le amamos a él, porque él nos amó primero.">1 Juan 4:19</span>
+                        <span class="verse-reference" data-verse="Así que, hermanos, os ruego por las misericordias de Dios, que presentéis vuestros cuerpos en sacrificio vivo, santo, agradable a Dios, que es vuestro culto racional.">Romanos 12:1</span>
+                        <span class="verse-reference" data-verse="Por tanto, nosotros todos, mirando a cara descubierta como en un espejo la gloria del Señor, somos transformados de gloria en gloria en la misma imagen, como por el Espíritu del Señor.">2 Corintios 3:18</span>
+                        <span class="verse-reference" data-verse="a fin de conocerle, y el poder de su resurrección, y la participación de sus padecimientos, llegando a ser semejante a él en su muerte.">Filipenses 3:10</span>
+                        <span class="verse-reference" data-verse="sino que siguiendo la verdad en amor, crezcamos en todo en aquel que es la cabeza, esto es, Cristo.">Efesios 4:15</span>
+                        <span class="verse-reference" data-verse="Mas el fruto del Espíritu es amor, gozo, paz, paciencia, benignidad, bondad, fe, mansedumbre, templanza; contra tales cosas no hay ley.">Gálatas 5:22-23</span>
+                        <span class="verse-reference" data-verse="como el Hijo del Hombre no vino para ser servido, sino para servir, y para dar su vida en rescate por muchos.">Mateo 20:28</span>
+                        <span class="verse-reference" data-verse="Cada uno según el don que ha recibido, minístrelo a los otros, como buenos administradores de la multiforme gracia de Dios. Si alguno habla, hable conforme a las palabras de Dios; si alguno ministra, ministre conforme al poder que Dios da, para que en todo sea Dios glorificado por Jesucristo, a quien pertenecen la gloria y el imperio por los siglos de los siglos. Amén.">1 Pedro 4:10-11</span>
+                        <span class="verse-reference" data-verse="sino, como aquel que os llamó es santo, sed también vosotros santos en toda vuestra manera de vivir; porque escrito está: Sed santos, porque yo soy santo.">1 Pedro 1:15-16</span>
+                        <span class="verse-reference" data-verse="Pero recibiréis poder, cuando haya venido sobre vosotros el Espíritu Santo, y me seréis testigos en Jerusalén, en toda Judea, en Samaria, y hasta lo último de la tierra.">Hechos 1:8</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="belief-card">
+                <div class="belief-number">17</div>
+                <h2 class="belief-title">Dones Espirituales</h2>
+                <div class="belief-content">
+                    <p>Creemos que cada miembro de la iglesia es un <strong>ministro</strong> al que se le han dado <strong>dones espirituales</strong> para ser descubiertos, desarrollados y desplegados dentro de la <strong>iglesia local</strong>.</p>
+                    
+                    <p>Creemos que el <strong>Espíritu Santo</strong> otorga dones espirituales a cada uno de sus hijos para el <strong>servicio a los demás</strong>. Estos dones no son para <strong>beneficio personal</strong>, sino para la <strong>edificación</strong> y el fortalecimiento de la iglesia.</p>
+                    
+                    <p>La <strong>expresión creativa de Dios</strong> se manifiesta plenamente en los dones dados a los creyentes, quienes funcionan juntos en <strong>unidad</strong> como miembros únicos de un solo <strong>Cuerpo</strong> en la iglesia local, trabajando para la edificación del Cuerpo de Cristo.</p>
+                    
+                    <p>Creemos que cada creyente tiene un <strong>papel único y esencial</strong> que desempeñar dentro de la comunidad de la iglesia. El propósito de los dones espirituales es <strong>edificar la iglesia</strong> y cumplir con la <strong>misión de Cristo</strong> en el mundo.</p>
+                    
+                    <p>La <strong>unidad en la diversidad</strong> de dones fortalece el Cuerpo de Cristo y permite que cada miembro, al utilizar su don, contribuya al <strong>crecimiento espiritual</strong> de toda la iglesia.</p>
+                    
+                    <div class="verse-list">
+                        <span class="verse-reference" data-verse="Ahora bien, hay diversidad de dones, pero el Espíritu es el mismo. Y hay diversidad de ministerios, pero el Señor es el mismo. Y hay diversidad de operaciones, pero Dios, que hace todas las cosas en todos, es el mismo. Pero a cada uno le es dada la manifestación del Espíritu para provecho... Porque por un solo Espíritu fuimos todos bautizados en un cuerpo, sean judíos o griegos, sean esclavos o libres; y a todos se nos dio a beber de un mismo Espíritu.">1 Corintios 12:4-13</span>
+                        <span class="verse-reference" data-verse="Digo, pues, por la gracia que me es dada, a cada cual que está entre vosotros, que no tenga más alto concepto de sí que el que debe tener, sino que piense de sí con cordura, conforme a la medida de fe que Dios repartió a cada uno... De manera que, teniendo diferentes dones, según la gracia que nos es dada, si el de profecía, úsese conforme a la medida de la fe; o si de servicio, en servir; o el que enseña, en la enseñanza.">Romanos 12:3-8</span>
+                        <span class="verse-reference" data-verse="Y él mismo constituyó a unos, apóstoles; a otros, profetas; a otros, evangelistas; a otros, pastores y maestros, a fin de perfeccionar a los santos para la obra del ministerio, para la edificación del cuerpo de Cristo, hasta que todos lleguemos a la unidad de la fe y del conocimiento del Hijo de Dios, a un varón perfecto, a la medida de la estatura de la plenitud de Cristo.">Efesios 4:11-13</span>
+                        <span class="verse-reference" data-verse="Cada uno según el don que ha recibido, minístrelo a los otros, como buenos administradores de la multiforme gracia de Dios. Si alguno habla, hable conforme a las palabras de Dios; si alguno ministra, ministre conforme al poder que Dios da, para que en todo sea Dios glorificado por Jesucristo, a quien pertenecen la gloria y el imperio por los siglos de los siglos. Amén.">1 Pedro 4:10-11</span>
+                        <span class="verse-reference" data-verse="Vosotros, pues, sois el cuerpo de Cristo, y miembros cada uno en particular. Y a unos puso Dios en la iglesia, primeramente apóstoles, luego profetas, lo tercero maestros, luego los que hacen milagros, después los que sanan, los que ayudan, los que administran, los que tienen don de lenguas.">1 Corintios 12:27-31</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="belief-card">
+                <div class="belief-number">18</div>
+                <h2 class="belief-title">Mayordomía Bíblica</h2>
+                <div class="belief-content">
+                    <p>Creemos que la <strong>mayordomía bíblica</strong> se refiere a la <strong>responsabilidad</strong> que tienen los creyentes de <strong>administrar fielmente</strong> los recursos que Dios les ha confiado, incluyendo su <strong>tiempo</strong>, <strong>talentos</strong>, <strong>posiciones</strong> y todo lo que les ha sido dado.</p>
+                    
+                    <p>La mayordomía no se limita únicamente a la administración del <strong>dinero</strong>, sino que también implica la administración de la <strong>vida en su totalidad</strong>, reconociendo que <strong>todo lo que poseemos es de Dios</strong> y debe ser usado para Su <strong>gloria</strong> y el <strong>beneficio de los demás</strong>.</p>
+                    
+                    <div class="verse-list">
+                        <span class="verse-reference" data-verse="Así, pues, téngannos los hombres por servidores de Cristo, y administradores de los misterios de Dios. Ahora bien, se requiere de los administradores, que cada uno sea hallado fiel.">1 Corintios 4:1-2</span>
+                        <span class="verse-reference" data-verse="Porque habéis sido comprados por precio; glorificad, pues, a Dios en vuestro cuerpo y en vuestro espíritu, los cuales son de Dios.">1 Corintios 6:20</span>
+                        <span class="verse-reference" data-verse="Mirad, pues, con diligencia cómo andéis, no como necios sino como sabios, aprovechando bien el tiempo, porque los días son malos. Por tanto, no seáis insensatos, sino entendidos de cuál sea la voluntad del Señor.">Efesios 5:15-17</span>
+                        <span class="verse-reference" data-verse="Y de hacer bien y de la ayuda mutua no os olvidéis; porque de tales sacrificios se agrada Dios.">Hebreos 13:16</span>
+                        <span class="verse-reference" data-verse="El que es enseñado en la palabra, haga partícipe de toda cosa buena al que lo instruye. No os engañéis; Dios no puede ser burlado: pues todo lo que el hombre sembrare, eso también segará. Porque el que siembra para su carne, de la carne segará corrupción; mas el que siembra para el Espíritu, del Espíritu segará vida eterna. No nos cansemos, pues, de hacer bien; porque a su tiempo segaremos, si no desmayamos. Así que, según tengamos oportunidad, hagamos bien a todos, y mayormente a los de la familia de la fe.">Gálatas 6:6-10</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="note">
+            <p><strong>Nota:</strong> Estas declaraciones son un resumen conciso de ciertas creencias fundamentales y no deben verse como una explicación integral de todo lo que creemos según la Biblia.</p>
+        </div>
+    </div>
+
+    <div class="tooltip" id="tooltip"></div>
+
+    <script>
+        // Improved tooltip functionality
+        const tooltip = document.getElementById('tooltip');
+        const verseReferences = document.querySelectorAll('.verse-reference');
+        let currentTooltip = null;
+
+        // Scroll animation observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all belief cards for scroll animations
+        document.querySelectorAll('.belief-card').forEach((card, index) => {
+            // Add staggered delay
+            card.style.transitionDelay = `${index * 0.1}s`;
+            observer.observe(card);
+        });
+
+        // Enhanced tooltip functionality
+        verseReferences.forEach(verse => {
+            verse.addEventListener('mouseenter', (e) => {
+                if (currentTooltip) {
+                    tooltip.classList.remove('show');
+                }
+                
+                const verseText = e.target.getAttribute('data-verse');
+                const verseTitle = e.target.textContent;
+                
+                tooltip.innerHTML = `<strong>${verseTitle}</strong><br><em>"${verseText}"</em>`;
+                
+                // Position tooltip with improved logic
+                const rect = e.target.getBoundingClientRect();
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+                
+                // Show tooltip to get dimensions
+                tooltip.style.visibility = 'hidden';
+                tooltip.style.opacity = '1';
+                tooltip.classList.add('show');
+                
+                const tooltipRect = tooltip.getBoundingClientRect();
+                
+                let left = rect.left + scrollLeft + (rect.width / 2) - (tooltipRect.width / 2);
+                let top = rect.top + scrollTop - tooltipRect.height - 15;
+                
+                // Boundary checking
+                const margin = 15;
+                if (left < margin) left = margin;
+                if (left + tooltipRect.width > window.innerWidth - margin) {
+                    left = window.innerWidth - tooltipRect.width - margin;
+                }
+                
+                // If tooltip goes off top of screen, show below element
+                if (top < scrollTop + margin) {
+                    top = rect.bottom + scrollTop + 15;
+                    tooltip.style.transform = 'translateY(0) scale(1)';
+                } else {
+                    tooltip.style.transform = 'translateY(0) scale(1)';
+                }
+                
+                tooltip.style.left = `${left}px`;
+                tooltip.style.top = `${top}px`;
+                tooltip.style.visibility = 'visible';
+                
+                currentTooltip = verse;
+                
+                // Add focus for accessibility
+                e.target.setAttribute('tabindex', '0');
+            });
+
+            verse.addEventListener('mouseleave', () => {
+                tooltip.classList.remove('show');
+                currentTooltip = null;
+                setTimeout(() => {
+                    if (!currentTooltip) {
+                        tooltip.style.visibility = 'hidden';
+                    }
+                }, 300);
+            });
+
+            // Keyboard support
+            verse.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    verse.dispatchEvent(new Event('mouseenter'));
+                }
+                if (e.key === 'Escape') {
+                    tooltip.classList.remove('show');
+                    verse.blur();
+                }
+            });
+        });
+
+        // Close tooltip on scroll, click, or escape
+        let scrollTimeout;
+        document.addEventListener('scroll', () => {
+            tooltip.classList.remove('show');
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                if (!currentTooltip) {
+                    tooltip.style.visibility = 'hidden';
+                }
+            }, 150);
+        }, { passive: true });
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.classList.contains('verse-reference')) {
+                tooltip.classList.remove('show');
+                currentTooltip = null;
+                setTimeout(() => {
+                    tooltip.style.visibility = 'hidden';
+                }, 300);
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                tooltip.classList.remove('show');
+                currentTooltip = null;
+            }
+        });
+
+        // Add loading animation completion
+        window.addEventListener('load', () => {
+            document.body.classList.add('loaded');
+        });
+
+        // Smooth scroll behavior for better UX
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
