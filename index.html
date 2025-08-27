@@ -1593,6 +1593,20 @@
             observer.observe(card);
         });
 
+                // Debug: Verify all belief card IDs are properly set
+                document.querySelectorAll('.belief-card').forEach((card, index) => {
+                    const cardId = card.id;
+                    const cardNumber = card.querySelector('.belief-number')?.textContent;
+                    console.log(`Card ${cardNumber}: ID = "${cardId}"`);
+
+                    // Ensure ID is set if missing
+                    if (!cardId && cardNumber) {
+                        const newId = `belief-${cardNumber}`;
+                        card.id = newId;
+                        console.log(`Fixed missing ID for card ${cardNumber}: ${newId}`);
+                    }
+                });
+
         // Enhanced tooltip functionality
         verseReferences.forEach(verse => {
             verse.addEventListener('mouseenter', (e) => {
@@ -1756,14 +1770,44 @@
                         });
                     });
 
-                                                                    // Simple and reliable smooth scroll function
+                            // Simple and reliable smooth scroll function
                     function smoothScrollToElement(elementId) {
                         const target = document.getElementById(elementId);
                         if (target) {
-                            target.scrollIntoView({
-                                behavior: 'smooth',
-                                block: 'start'
-                            });
+                            // Get the target position
+                            const targetPosition = target.offsetTop;
+                            const startPosition = window.pageYOffset;
+                            const distance = targetPosition - startPosition - 100; // Offset for better positioning
+
+                            // Use smooth scroll that works better on mobile
+                            if ('scrollBehavior' in document.documentElement.style) {
+                            // Modern browsers with smooth scroll support
+                                target.scrollIntoView({
+                                    behavior: 'smooth',
+                                    block: 'start'
+                                });
+                            } else {
+                                // Fallback for older browsers and better mobile support
+                                const duration = 800;
+                                let start = null;
+
+                                function animation(currentTime) {
+                                    if (start === null) start = currentTime;
+                                    const timeElapsed = currentTime - start;
+                                    const run = ease(timeElapsed, startPosition, distance, duration);
+                                    window.scrollTo(0, run);
+                                    if (timeElapsed < duration) requestAnimationFrame(animation);
+                                }
+
+                                function ease(t, b, c, d) {
+                                    t /= d / 2;
+                                    if (t < 1) return c / 2 * t * t + b;
+                                    t--;
+                                    return -c / 2 * (t * (t - 2) - 1) + b;
+                                }
+
+                                requestAnimationFrame(animation);
+                            }
                         }
                     }
 
@@ -1777,17 +1821,31 @@
                                 smoothScrollToElement(elementId);
                             });
                         });
-            });
+                    });
 
                                     // Simple click handler for any navigation links
-    document.addEventListener('click', function (e) {
-        if (e.target.closest('a[href^="#"]')) {
-            e.preventDefault();
-            const link = e.target.closest('a[href^="#"]');
-            const href = link.getAttribute('href');
-            const elementId = href.substring(1);
+                            document.addEventListener('click', function (e) {
+                                if (e.target.closest('a[href^="#"]')) {
+                                    e.preventDefault();
+                                    const link = e.target.closest('a[href^="#"]');
+                                    const href = link.getAttribute('href');
+                                    const elementId = href.substring(1);
 
-            smoothScrollToElement(elementId);
-        }
-    });
+                                // Debug: Log the element being targeted
+                                console.log('Navigating to:', elementId);
+                                const target = document.getElementById(elementId);
+                                if (target) {
+                                    console.log('Target found:', target);
+                                smoothScrollToElement(elementId);
+                            } else {
+                                console.error('Target not found for ID:', elementId);
+                                // Fallback: try to find by class or other means
+                                const fallbackTarget = document.querySelector(`[id*="${elementId}"]`);
+                                if (fallbackTarget) {
+                                    console.log('Fallback target found:', fallbackTarget);
+                                    smoothScrollToElement(fallbackTarget.id);
+                                }
+                            }
+                            }
+                        });
     </script>
