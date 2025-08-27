@@ -18,6 +18,37 @@
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             min-height: 100vh;
             scroll-behavior: smooth;
+            transition: filter 0.3s ease;
+        }
+
+        /* Create overlay for blur effect */
+        .background-blur-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(248, 249, 250, 0.8);
+            backdrop-filter: blur(3px);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            z-index: 5;
+            pointer-events: none;
+        }
+
+        .background-blur-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Ensure the hovered card stays sharp and above the overlay */
+        .belief-card:hover {
+            transform: translateY(-2px);
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+            border-color: #d1d5db;
+            position: relative;
+            z-index: 10;
         }
 
         .container {
@@ -411,6 +442,8 @@
 
             .belief-card:hover {
                 box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+                position: relative;
+                z-index: 10;
             }
 
             .belief-number {
@@ -517,6 +550,8 @@
 
             .belief-card:hover {
                 box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+                position: relative;
+                z-index: 10;
             }
 
             .belief-number {
@@ -586,6 +621,8 @@
 
             .belief-card:hover {
                 box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+                position: relative;
+                z-index: 10;
             }
 
             .belief-number {
@@ -642,6 +679,8 @@
 
             .belief-card:hover {
                 box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+                position: relative;
+                z-index: 10;
             }
 
             .belief-number {
@@ -781,6 +820,7 @@
     </style>
 </head>
 <body>
+    <div class="background-blur-overlay"></div>
     <div class="container">
         <div class="header">
             <h1>Iglesia Bautista Filadelfia Curicó</h1>
@@ -1431,6 +1471,22 @@
         window.addEventListener('load', () => {
             document.body.classList.add('loaded');
         });
+
+                    // Add blur effect to background when hovering over belief cards
+                    document.addEventListener('DOMContentLoaded', function () {
+                        const beliefCards = document.querySelectorAll('.belief-card');
+                        const blurOverlay = document.querySelector('.background-blur-overlay');
+
+                        beliefCards.forEach(card => {
+                            card.addEventListener('mouseenter', () => {
+                                blurOverlay.classList.add('active');
+                            });
+
+                            card.addEventListener('mouseleave', () => {
+                                blurOverlay.classList.remove('active');
+                            });
+                        });
+                    });
 
                     // Enhanced smooth scroll behavior for better UX
                     function smoothScrollToElement(elementId) {
