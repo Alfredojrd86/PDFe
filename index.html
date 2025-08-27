@@ -1130,7 +1130,7 @@
                 </a>
                 <a href="#belief-18" class="nav-item">
                     <span class="nav-number">18</span>
-                    <span class="nav-title">Mayordomía</span>
+                    <span class="nav-title">Mayordomía Bíblica</span>
                 </a>
             </div>
         </div>
@@ -1516,7 +1516,7 @@
                 </div>
             </div>
 
-            <div class="belief-card">
+            <div class="belief-card" id="belief-17">
                 <div class="belief-number">17</div>
                 <h2 class="belief-title">Dones Espirituales</h2>
                 <div class="belief-content">
@@ -1540,7 +1540,7 @@
                 </div>
             </div>
 
-            <div class="belief-card">
+            <div class="belief-card" id="belief-18">
                 <div class="belief-number">18</div>
                 <h2 class="belief-title">Mayordomía Bíblica</h2>
                 <div class="belief-content">
@@ -1592,6 +1592,20 @@
             card.style.transitionDelay = `${index * 0.1}s`;
             observer.observe(card);
         });
+
+                // Debug: Verify all belief card IDs are properly set
+                document.querySelectorAll('.belief-card').forEach((card, index) => {
+                    const cardId = card.id;
+                    const cardNumber = card.querySelector('.belief-number')?.textContent;
+                    console.log(`Card ${cardNumber}: ID = "${cardId}"`);
+
+                    // Ensure ID is set if missing
+                    if (!cardId && cardNumber) {
+                        const newId = `belief-${cardNumber}`;
+                        card.id = newId;
+                        console.log(`Fixed missing ID for card ${cardNumber}: ${newId}`);
+                    }
+                });
 
         // Enhanced tooltip functionality
         verseReferences.forEach(verse => {
@@ -1697,9 +1711,17 @@
             }
         });
 
-        // Add loading animation completion
+                                    // Add loading animation completion and ensure all elements are ready
         window.addEventListener('load', () => {
             document.body.classList.add('loaded');
+
+            // Ensure all belief cards are properly loaded and animated
+            const beliefCards = document.querySelectorAll('.belief-card');
+            beliefCards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('animate-in');
+                }, index * 100); // Stagger the animations
+            });
         });
 
                     // Scroll to top button functionality
@@ -1748,18 +1770,45 @@
                         });
                     });
 
-                    // Enhanced smooth scroll behavior for better UX
+                            // Simple and reliable smooth scroll function
                     function smoothScrollToElement(elementId) {
                         const target = document.getElementById(elementId);
-                if (target) {
-                    // Add a small delay to ensure the element is fully rendered
-                    setTimeout(() => {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    }, 50);
-                }
+                        if (target) {
+                            // Get the target position
+                            const targetPosition = target.offsetTop;
+                            const startPosition = window.pageYOffset;
+                            const distance = targetPosition - startPosition - 100; // Offset for better positioning
+
+                            // Use smooth scroll that works better on mobile
+                            if ('scrollBehavior' in document.documentElement.style) {
+                            // Modern browsers with smooth scroll support
+                                target.scrollIntoView({
+                                    behavior: 'smooth',
+                                    block: 'start'
+                                });
+                            } else {
+                                // Fallback for older browsers and better mobile support
+                                const duration = 800;
+                                let start = null;
+
+                                function animation(currentTime) {
+                                    if (start === null) start = currentTime;
+                                    const timeElapsed = currentTime - start;
+                                    const run = ease(timeElapsed, startPosition, distance, duration);
+                                    window.scrollTo(0, run);
+                                    if (timeElapsed < duration) requestAnimationFrame(animation);
+                                }
+
+                                function ease(t, b, c, d) {
+                                    t /= d / 2;
+                                    if (t < 1) return c / 2 * t * t + b;
+                                    t--;
+                                    return -c / 2 * (t * (t - 2) - 1) + b;
+                                }
+
+                                requestAnimationFrame(animation);
+                            }
+                        }
                     }
 
                     // Add click event listeners to all navigation links
@@ -1772,30 +1821,31 @@
                                 smoothScrollToElement(elementId);
                             });
                         });
-            });
+                    });
 
-    // Alternative approach for elements that might be loaded dynamically
-    document.addEventListener('click', function (e) {
-        if (e.target.closest('a[href^="#"]')) {
-            e.preventDefault();
-            const link = e.target.closest('a[href^="#"]');
-            const href = link.getAttribute('href');
-            const elementId = href.substring(1);
+                                    // Simple click handler for any navigation links
+                            document.addEventListener('click', function (e) {
+                                if (e.target.closest('a[href^="#"]')) {
+                                    e.preventDefault();
+                                    const link = e.target.closest('a[href^="#"]');
+                                    const href = link.getAttribute('href');
+                                    const elementId = href.substring(1);
 
-            // Try to find the element
-            let target = document.getElementById(elementId);
-
-            if (!target) {
-                // If element is not found immediately, wait a bit and try again
-                setTimeout(() => {
-                    target = document.getElementById(elementId);
-                    if (target) {
-                        smoothScrollToElement(elementId);
-                    }
-                }, 100);
-            } else {
-                smoothScrollToElement(elementId);
-            }
-        }
-        });
+                                // Debug: Log the element being targeted
+                                console.log('Navigating to:', elementId);
+                                const target = document.getElementById(elementId);
+                                if (target) {
+                                    console.log('Target found:', target);
+                                smoothScrollToElement(elementId);
+                            } else {
+                                console.error('Target not found for ID:', elementId);
+                                // Fallback: try to find by class or other means
+                                const fallbackTarget = document.querySelector(`[id*="${elementId}"]`);
+                                if (fallbackTarget) {
+                                    console.log('Fallback target found:', fallbackTarget);
+                                    smoothScrollToElement(fallbackTarget.id);
+                                }
+                            }
+                            }
+                        });
     </script>
