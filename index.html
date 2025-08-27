@@ -31,8 +31,8 @@
             margin-bottom: 3rem;
             background: white;
             padding: 3rem 2rem;
-            border-radius: 16px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border-radius: 0;
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
             border: 1px solid #e5e7eb;
             position: relative;
             overflow: hidden;
@@ -84,22 +84,27 @@
 
         .beliefs-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: 1fr;
             gap: 2rem;
             margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .belief-card {
             background: white;
-            border-radius: 16px;
+            border-radius: 0;
             padding: 2.5rem;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
             border: 1px solid #e5e7eb;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
             transform: translateY(0);
             max-height: none;
+            margin: 0 auto;
+            width: 100%;
         }
 
         .belief-card::before {
@@ -129,8 +134,8 @@
         }
 
         .belief-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 8px 16px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
             border-color: #d1d5db;
         }
 
@@ -148,21 +153,20 @@
             color: white;
             width: 52px;
             height: 52px;
-            border-radius: 12px;
+            border-radius: 0;
             text-align: center;
             line-height: 52px;
             font-weight: 700;
             font-size: 1.2rem;
             margin-bottom: 1.5rem;
-            box-shadow: 0 4px 12px rgba(17, 24, 39, 0.3);
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             z-index: 2;
         }
 
         .belief-card:hover .belief-number {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 6px 16px rgba(17, 24, 39, 0.4);
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
         }
 
         .belief-title {
@@ -178,6 +182,7 @@
             font-size: 0.95rem;
             line-height: 1.8;
             color: #374151;
+            text-align: justify;
         }
 
         .belief-content p {
@@ -242,10 +247,10 @@
             background: linear-gradient(145deg, #111827 0%, #1f2937 100%);
             color: white;
             padding: 1.5rem;
-            border-radius: 12px;
+            border-radius: 0;
             font-size: 0.9rem;
             max-width: 350px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25), 0 8px 16px rgba(0, 0, 0, 0.15);
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
             z-index: 1000;
             opacity: 0;
             visibility: hidden;
@@ -278,7 +283,7 @@
             right: 0;
             bottom: 0;
             background: linear-gradient(45deg, rgba(255, 255, 255, 0.05) 0%, transparent 50%, rgba(255, 255, 255, 0.05) 100%);
-            border-radius: 10px;
+            border-radius: 0;
             pointer-events: none;
         }
 
@@ -313,11 +318,11 @@
 
         .note {
             background: linear-gradient(135deg, white 0%, #f9fafb 100%);
-            border-radius: 16px;
+            border-radius: 0;
             padding: 2.5rem;
             margin-top: 2rem;
             border-left: 4px solid linear-gradient(135deg, #111827 0%, #374151 100%);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
             border-right: 1px solid #e5e7eb;
             border-top: 1px solid #e5e7eb;
             border-bottom: 1px solid #e5e7eb;
@@ -339,7 +344,7 @@
 
         .note:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
         }
 
         .note p {
@@ -357,6 +362,8 @@
             .header {
                 padding: 2rem 1.5rem;
                 margin-bottom: 2rem;
+                border-radius: 0;
+                box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
             }
 
             .header h1 {
@@ -368,6 +375,29 @@
                 font-size: 1rem;
             }
 
+            .quick-nav {
+                padding: 1.5rem;
+                border-radius: 0;
+                box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            }
+
+            .nav-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                gap: 0.5rem;
+            }
+
+            .nav-item {
+                padding: 0.5rem;
+            }
+
+            .nav-item .nav-number {
+                font-size: 1rem;
+            }
+
+            .nav-item .nav-title {
+                font-size: 0.7rem;
+            }
+
             .beliefs-grid {
                 grid-template-columns: 1fr;
                 gap: 1rem;
@@ -375,7 +405,12 @@
 
             .belief-card {
                 padding: 1.25rem;
-                border-radius: 12px;
+                border-radius: 0;
+                box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            }
+
+            .belief-card:hover {
+                box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
             }
 
             .belief-number {
@@ -384,6 +419,12 @@
                 line-height: 44px;
                 font-size: 1rem;
                 margin-bottom: 1rem;
+                border-radius: 0;
+                box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            }
+
+            .belief-card:hover .belief-number {
+                box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
             }
 
             .belief-title {
@@ -420,11 +461,19 @@
                 max-width: 280px;
                 font-size: 0.8rem;
                 padding: 1rem;
+                border-radius: 0;
+                box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
             }
 
             .note {
                 padding: 1.5rem;
                 margin-top: 1.5rem;
+                border-radius: 0;
+                box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            }
+
+            .note:hover {
+                box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
             }
         }
 
@@ -436,10 +485,23 @@
 
             .header {
                 padding: 2.5rem 2rem;
+                border-radius: 0;
+                box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
             }
 
             .header h1 {
                 font-size: 2rem;
+            }
+
+            .quick-nav {
+                padding: 1.75rem;
+                border-radius: 0;
+                box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            }
+
+            .nav-grid {
+                grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+                gap: 0.75rem;
             }
 
             .beliefs-grid {
@@ -449,6 +511,12 @@
 
             .belief-card {
                 padding: 2rem;
+                border-radius: 0;
+                box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            }
+
+            .belief-card:hover {
+                box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
             }
 
             .belief-number {
@@ -456,6 +524,12 @@
                 height: 48px;
                 line-height: 48px;
                 font-size: 1.1rem;
+                border-radius: 0;
+                box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            }
+
+            .belief-card:hover .belief-number {
+                box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
             }
 
             .belief-title {
@@ -473,22 +547,69 @@
             .tooltip {
                 max-width: 300px;
                 font-size: 0.85rem;
+                border-radius: 0;
+                box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            }
+
+            .note {
+                border-radius: 0;
+                box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            }
+
+            .note:hover {
+                box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
             }
         }
 
         /* Large tablets and small desktops */
         @media (min-width: 769px) and (max-width: 1024px) {
+            .header {
+                border-radius: 0;
+                box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            }
+
+            .quick-nav {
+                border-radius: 0;
+                box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            }
+
             .beliefs-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: 1fr;
                 gap: 1.75rem;
             }
 
             .belief-card {
                 padding: 2.25rem;
+                border-radius: 0;
+                box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            }
+
+            .belief-card:hover {
+                box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+            }
+
+            .belief-number {
+                border-radius: 0;
+                box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            }
+
+            .belief-card:hover .belief-number {
+                box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
             }
 
             .tooltip {
                 max-width: 320px;
+                border-radius: 0;
+                box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            }
+
+            .note {
+                border-radius: 0;
+                box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            }
+
+            .note:hover {
+                box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
             }
         }
 
@@ -498,13 +619,52 @@
                 max-width: 1400px;
             }
 
+            .header {
+                border-radius: 0;
+                box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            }
+
+            .quick-nav {
+                border-radius: 0;
+                box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            }
+
             .beliefs-grid {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: 1fr;
                 gap: 2.5rem;
             }
 
             .belief-card {
                 padding: 3rem;
+                border-radius: 0;
+                box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            }
+
+            .belief-card:hover {
+                box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+            }
+
+            .belief-number {
+                border-radius: 0;
+                box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            }
+
+            .belief-card:hover .belief-number {
+                box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+            }
+
+            .tooltip {
+                border-radius: 0;
+                box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            }
+
+            .note {
+                border-radius: 0;
+                box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            }
+
+            .note:hover {
+                box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
             }
 
             .header h1 {
@@ -558,6 +718,66 @@
             animation: textGlow 1s infinite;
             color: #111827;
         }
+
+        /* Navegación rápida */
+        .quick-nav {
+            background: white;
+            border-radius: 0;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+            border: 1px solid #e5e7eb;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .quick-nav h2 {
+            font-size: 1.5rem;
+            color: #111827;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .nav-item {
+            display: block;
+            padding: 0.75rem;
+            background: #f8f9fa;
+            border: 1px solid #e5e7eb;
+            text-decoration: none;
+            color: #374151;
+            text-align: center;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            border-radius: 0;
+        }
+
+        .nav-item:hover {
+            background: #f8f9fa;
+            color: #374151;
+            transform: translateY(-1px);
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+        }
+
+        .nav-item .nav-number {
+            display: block;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .nav-item .nav-title {
+            display: block;
+            font-size: 0.8rem;
+            line-height: 1.2;
+        }
     </style>
 </head>
 <body>
@@ -567,8 +787,86 @@
             <p>Declaración de Fe</p>
         </div>
 
+        <div class="quick-nav">
+            <h2>Navegación Rápida</h2>
+            <div class="nav-grid">
+                <a href="#belief-1" class="nav-item">
+                    <span class="nav-number">1</span>
+                    <span class="nav-title">Sagradas Escrituras</span>
+                </a>
+                <a href="#belief-2" class="nav-item">
+                    <span class="nav-number">2</span>
+                    <span class="nav-title">Dios</span>
+                </a>
+                <a href="#belief-3" class="nav-item">
+                    <span class="nav-number">3</span>
+                    <span class="nav-title">Jesucristo</span>
+                </a>
+                <a href="#belief-4" class="nav-item">
+                    <span class="nav-number">4</span>
+                    <span class="nav-title">Espíritu Santo</span>
+                </a>
+                <a href="#belief-5" class="nav-item">
+                    <span class="nav-number">5</span>
+                    <span class="nav-title">Creación</span>
+                </a>
+                <a href="#belief-6" class="nav-item">
+                    <span class="nav-number">6</span>
+                    <span class="nav-title">Condición del Hombre</span>
+                </a>
+                <a href="#belief-7" class="nav-item">
+                    <span class="nav-number">7</span>
+                    <span class="nav-title">Salvación</span>
+                </a>
+                <a href="#belief-8" class="nav-item">
+                    <span class="nav-number">8</span>
+                    <span class="nav-title">Creación del Hombre</span>
+                </a>
+                <a href="#belief-9" class="nav-item">
+                    <span class="nav-number">9</span>
+                    <span class="nav-title">Matrimonio</span>
+                </a>
+                <a href="#belief-10" class="nav-item">
+                    <span class="nav-number">10</span>
+                    <span class="nav-title">Arrebatamiento</span>
+                </a>
+                <a href="#belief-11" class="nav-item">
+                    <span class="nav-number">11</span>
+                    <span class="nav-title">Reino de Cristo</span>
+                </a>
+                <a href="#belief-12" class="nav-item">
+                    <span class="nav-number">12</span>
+                    <span class="nav-title">Resurrección Final</span>
+                </a>
+                <a href="#belief-13" class="nav-item">
+                    <span class="nav-number">13</span>
+                    <span class="nav-title">La Eternidad</span>
+                </a>
+                <a href="#belief-14" class="nav-item">
+                    <span class="nav-number">14</span>
+                    <span class="nav-title">La Iglesia</span>
+                </a>
+                <a href="#belief-15" class="nav-item">
+                    <span class="nav-number">15</span>
+                    <span class="nav-title">Liderazgo</span>
+                </a>
+                <a href="#belief-16" class="nav-item">
+                    <span class="nav-number">16</span>
+                    <span class="nav-title">Creyentes</span>
+                </a>
+                <a href="#belief-17" class="nav-item">
+                    <span class="nav-number">17</span>
+                    <span class="nav-title">Dones Espirituales</span>
+                </a>
+                <a href="#belief-18" class="nav-item">
+                    <span class="nav-number">18</span>
+                    <span class="nav-title">Mayordomía</span>
+                </a>
+            </div>
+        </div>
+
         <div class="beliefs-grid">
-            <div class="belief-card">
+            <div class="belief-card" id="belief-1">
                 <div class="belief-number">1</div>
                 <h2 class="belief-title">Las Sagradas Escrituras</h2>
                 <div class="belief-content">
@@ -595,7 +893,7 @@
                 </div>
             </div>
 
-            <div class="belief-card">
+            <div class="belief-card" id="belief-2">
                 <div class="belief-number">2</div>
                 <h2 class="belief-title">Dios</h2>
                 <div class="belief-content">
@@ -614,7 +912,7 @@
                 </div>
             </div>
 
-            <div class="belief-card">
+            <div class="belief-card" id="belief-3">
                 <div class="belief-number">3</div>
                 <h2 class="belief-title">El Mesías / Jesucristo</h2>
                 <div class="belief-content">
@@ -641,7 +939,7 @@
                 </div>
             </div>
 
-            <div class="belief-card">
+            <div class="belief-card" id="belief-4">
                 <div class="belief-number">4</div>
                 <h2 class="belief-title">El Espíritu Santo</h2>
                 <div class="belief-content">
@@ -664,7 +962,7 @@
                 </div>
             </div>
 
-            <div class="belief-card">
+            <div class="belief-card" id="belief-5">
                 <div class="belief-number">5</div>
                 <h2 class="belief-title">La Creación</h2>
                 <div class="belief-content">
@@ -676,7 +974,7 @@
                 </div>
             </div>
 
-            <div class="belief-card">
+            <div class="belief-card" id="belief-6">
                 <div class="belief-number">6</div>
                 <h2 class="belief-title">La Condición del Hombre</h2>
                 <div class="belief-content">
@@ -691,7 +989,7 @@
                 </div>
             </div>
 
-            <div class="belief-card">
+            <div class="belief-card" id="belief-7">
                 <div class="belief-number">7</div>
                 <h2 class="belief-title">La Salvación / Redención</h2>
                 <div class="belief-content">
@@ -725,7 +1023,7 @@
                 </div>
             </div>
 
-            <div class="belief-card">
+            <div class="belief-card" id="belief-8">
                 <div class="belief-number">8</div>
                 <h2 class="belief-title">La Creación del Hombre</h2>
                 <div class="belief-content">
@@ -746,7 +1044,7 @@
                 </div>
             </div>
 
-            <div class="belief-card">
+            <div class="belief-card" id="belief-9">
                 <div class="belief-number">9</div>
                 <h2 class="belief-title">El Matrimonio</h2>
                 <div class="belief-content">
@@ -769,7 +1067,7 @@
                 </div>
             </div>
 
-            <div class="belief-card">
+            <div class="belief-card" id="belief-10">
                 <div class="belief-number">10</div>
                 <h2 class="belief-title">Arrebatamiento</h2>
                 <div class="belief-content">
@@ -788,7 +1086,7 @@
                 </div>
             </div>
 
-            <div class="belief-card">
+            <div class="belief-card" id="belief-11">
                 <div class="belief-number">11</div>
                 <h2 class="belief-title">El Reino de Cristo</h2>
                 <div class="belief-content">
@@ -806,7 +1104,7 @@
                 </div>
             </div>
 
-            <div class="belief-card">
+            <div class="belief-card" id="belief-12">
                 <div class="belief-number">12</div>
                 <h2 class="belief-title">La Resurrección Final y el Juicio</h2>
                 <div class="belief-content">
@@ -823,7 +1121,7 @@
                 </div>
             </div>
 
-            <div class="belief-card">
+            <div class="belief-card" id="belief-13">
                 <div class="belief-number">13</div>
                 <h2 class="belief-title">La Eternidad</h2>
                 <div class="belief-content">
@@ -841,7 +1139,7 @@
                 </div>
             </div>
 
-            <div class="belief-card">
+            <div class="belief-card" id="belief-14">
                 <div class="belief-number">14</div>
                 <h2 class="belief-title">La Iglesia - El Cuerpo de Cristo</h2>
                 <div class="belief-content">
@@ -890,7 +1188,7 @@
                 </div>
             </div>
 
-            <div class="belief-card">
+            <div class="belief-card" id="belief-15">
                 <div class="belief-number">15</div>
                 <h2 class="belief-title">El Liderazgo de la Iglesia</h2>
                 <div class="belief-content">
@@ -913,7 +1211,7 @@
                 </div>
             </div>
 
-            <div class="belief-card">
+            <div class="belief-card" id="belief-16">
                 <div class="belief-number">16</div>
                 <h2 class="belief-title">Los Creyentes en Cristo</h2>
                 <div class="belief-content">
@@ -1134,17 +1432,54 @@
             document.body.classList.add('loaded');
         });
 
-        // Smooth scroll behavior for better UX
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
+                    // Enhanced smooth scroll behavior for better UX
+                    function smoothScrollToElement(elementId) {
+                        const target = document.getElementById(elementId);
                 if (target) {
+                    // Add a small delay to ensure the element is fully rendered
+                    setTimeout(() => {
                     target.scrollIntoView({
                         behavior: 'smooth',
                         block: 'start'
                     });
+                    }, 50);
                 }
+                    }
+
+                    // Add click event listeners to all navigation links
+                    document.addEventListener('DOMContentLoaded', function () {
+                        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                            anchor.addEventListener('click', function (e) {
+                                e.preventDefault();
+                                const href = this.getAttribute('href');
+                                const elementId = href.substring(1); // Remove the # symbol
+                                smoothScrollToElement(elementId);
+                            });
+                        });
             });
+
+    // Alternative approach for elements that might be loaded dynamically
+    document.addEventListener('click', function (e) {
+        if (e.target.closest('a[href^="#"]')) {
+            e.preventDefault();
+            const link = e.target.closest('a[href^="#"]');
+            const href = link.getAttribute('href');
+            const elementId = href.substring(1);
+
+            // Try to find the element
+            let target = document.getElementById(elementId);
+
+            if (!target) {
+                // If element is not found immediately, wait a bit and try again
+                setTimeout(() => {
+                    target = document.getElementById(elementId);
+                    if (target) {
+                        smoothScrollToElement(elementId);
+                    }
+                }, 100);
+            } else {
+                smoothScrollToElement(elementId);
+            }
+        }
         });
     </script>
