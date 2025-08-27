@@ -1130,7 +1130,7 @@
                 </a>
                 <a href="#belief-18" class="nav-item">
                     <span class="nav-number">18</span>
-                    <span class="nav-title">Mayordomía</span>
+                    <span class="nav-title">Mayordomía Bíblica</span>
                 </a>
             </div>
         </div>
@@ -1516,7 +1516,7 @@
                 </div>
             </div>
 
-            <div class="belief-card">
+            <div class="belief-card" id="belief-17">
                 <div class="belief-number">17</div>
                 <h2 class="belief-title">Dones Espirituales</h2>
                 <div class="belief-content">
@@ -1540,7 +1540,7 @@
                 </div>
             </div>
 
-            <div class="belief-card">
+            <div class="belief-card" id="belief-18">
                 <div class="belief-number">18</div>
                 <h2 class="belief-title">Mayordomía Bíblica</h2>
                 <div class="belief-content">
@@ -1697,9 +1697,17 @@
             }
         });
 
-        // Add loading animation completion
+                                    // Add loading animation completion and ensure all elements are ready
         window.addEventListener('load', () => {
             document.body.classList.add('loaded');
+
+            // Ensure all belief cards are properly loaded and animated
+            const beliefCards = document.querySelectorAll('.belief-card');
+            beliefCards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('animate-in');
+                }, index * 100); // Stagger the animations
+            });
         });
 
                     // Scroll to top button functionality
@@ -1748,18 +1756,15 @@
                         });
                     });
 
-                    // Enhanced smooth scroll behavior for better UX
+                                                                    // Simple and reliable smooth scroll function
                     function smoothScrollToElement(elementId) {
                         const target = document.getElementById(elementId);
-                if (target) {
-                    // Add a small delay to ensure the element is fully rendered
-                    setTimeout(() => {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                    }, 50);
-                }
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
                     }
 
                     // Add click event listeners to all navigation links
@@ -1774,7 +1779,7 @@
                         });
             });
 
-    // Alternative approach for elements that might be loaded dynamically
+                                    // Simple click handler for any navigation links
     document.addEventListener('click', function (e) {
         if (e.target.closest('a[href^="#"]')) {
             e.preventDefault();
@@ -1782,20 +1787,7 @@
             const href = link.getAttribute('href');
             const elementId = href.substring(1);
 
-            // Try to find the element
-            let target = document.getElementById(elementId);
-
-            if (!target) {
-                // If element is not found immediately, wait a bit and try again
-                setTimeout(() => {
-                    target = document.getElementById(elementId);
-                    if (target) {
-                        smoothScrollToElement(elementId);
-                    }
-                }, 100);
-            } else {
-                smoothScrollToElement(elementId);
-            }
+            smoothScrollToElement(elementId);
         }
-        });
+    });
     </script>
